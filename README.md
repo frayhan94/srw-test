@@ -21,4 +21,4 @@
 
 ## Link
 
-https://ajaib-fe-test-one.vercel.app/
+https://srw-test-omega.vercel.app/
