@@ -6,7 +6,6 @@ import { Layout } from '../../components';
 
 const { Meta } = Card;
 const { Title } = Typography;
-const GENRE = JSON.parse(localStorage.getItem('GENRE')) || [];
 function Home() {
   const dispatch = useDispatch();
   const movieState = useSelector((state) => state.movie);
@@ -30,7 +29,7 @@ function Home() {
           movieState?.data?.map((value, index) => (
             <div>
               <Title level={2}>
-                {GENRE.length > 0 ? GENRE[index] : ''}
+                {movieState?.genre[index] || ''}
               </Title>
               <div style={{ display: 'flex', gap: '16px', overflowY: 'scroll', marginBottom: '24px' }}>
                 {

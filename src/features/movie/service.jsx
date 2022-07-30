@@ -15,14 +15,18 @@ const getGenres = async () => {
 const getMovies = async () => {
   const takeFirstGenres = await getGenres();
   const takeGenresName = takeFirstGenres.map((valueGenres) => valueGenres.name);
-  localStorage.setItem('GENRE', JSON.stringify(takeGenresName));
   const takeAllMovies = takeFirstGenres.map(async (value) => {
     const queryMovie = transformObjToQuery({ with_genres: value.id, api_key: API_KEY });
     const urlMovie = `${BASE_URL}/discover/movie${queryMovie}`;
     const response = await axios.get(urlMovie);
     return response.data;
   });
-  return Promise.all(takeAllMovies);
+
+  const waitAllMovies = await Promise.all(takeAllMovies);
+  return {
+    genre: takeGenresName,
+    movie: waitAllMovies,
+  };
 };
 
 const service = {
