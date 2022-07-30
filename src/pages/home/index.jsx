@@ -37,7 +37,7 @@ function Home() {
                   value.results.map((valueResults) => (
                     <Card
                       hoverable
-                      style={{ width: 240 }}
+                      style={{ width: 240, minWidth: 240 }}
                       cover={<img style={{ height: '280px' }} alt="example" src={`https://image.tmdb.org/t/p/original/${valueResults.backdrop_path}`} />}
                     >
                       {/* eslint-disable-next-line max-len */}
